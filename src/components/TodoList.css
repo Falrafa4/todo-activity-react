@@ -1,17 +1,11 @@
-/* .todo-list {
-    padding-inline: 2rem;
-} */
-
 .todo-list ul {
     list-style: none;
-    /* display: flex;
-    flex-direction: column;
-    gap: 0.5rem; */
 }
 
 .todo-list ul li {
     padding-block: 0.7rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);

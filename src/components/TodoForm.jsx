@@ -9,11 +9,11 @@ export default function TodoForm({ onAddTodo }) {
     }
 
     function handleClick(e) {
+        e.preventDefault();
         if (todo.trim() === '') {
             alert("Don't Empty!");
             return;
         }
-        e.preventDefault();
         setTodo("");
         onAddTodo(todo);
     }

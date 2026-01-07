@@ -1,10 +1,26 @@
 import "./TodoItem.css";
 
-export default function TodoItem({ title, done, onChange }) {
+export default function TodoItem({ todo, onChange, onDelete }) {
+    function handleChangeDone(e) {
+        const newTodo = { ...todo, done: e.target.checked };
+        onChange(newTodo);
+    }
+
+    function handleDeleteTodo() {
+        onDelete(todo);
+    }
+
     return (
         <li>
-            <input type="checkbox" checked={done && true} onChange={onChange} />
-            {done ? <del>{title}</del> : title}
+            <div className="todo-item">
+                <input type="checkbox" checked={todo.done} onChange={handleChangeDone} />
+                {todo.done ? <del>{todo.title}</del> : todo.title}
+            </div>
+            <div className="delete-icon" onClick={handleDeleteTodo}>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#888888">
+                    <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                </svg>
+            </div>
         </li>
     )
 }

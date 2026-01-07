@@ -5,7 +5,8 @@ form {
 }
 
 form input {
-    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
     border-radius: 0.2rem;
     outline: none;
     border: 1px solid black;
@@ -21,7 +22,7 @@ button {
     background-color: var(--primary);
     border: none;
     outline: none;
-    border-radius: 0.1rem;
+    border-radius: 0.2rem;
     font-weight: 500;
     color: white;
     cursor: pointer;

@@ -8,3 +8,17 @@ li:hover {
     background-color: #efefef;
     cursor: pointer;
 }
+
+.todo-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.delete-icon svg {
+    transition: fill .3s;
+}
+
+.delete-icon:hover svg {
+    fill: #000;
+}

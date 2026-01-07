@@ -14,10 +14,6 @@ const initialTodos = [
 function App() {
   const [todos, setTodos] = useState(initialTodos);
 
-  function handleChangeTodo() {
-    console.log('Done clicked')
-  }
-
   function handleAddTodo(title) {
     const newTodo = {
       id: id++,
@@ -28,11 +24,32 @@ function App() {
     setTodos([...todos, newTodo]);
   }
 
+  function handleChangeTodo(todo) {
+    const updatedTodo = todos.map(item => {
+      if (item.id === todo.id) {
+        // insert data baru
+        return todo;
+      } else {
+        // insert data lama
+        return item;
+      }
+    });
+    setTodos(updatedTodo);
+  }
+
+  function handleDeleteTodo(todo) {
+    setTodos(
+      todos.filter(item => 
+        item.id !== todo.id
+      )
+    )
+  }
+
   return (
     <main>
       <Header />
       <TodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} setTodos={setTodos} onChange={handleChangeTodo} />
+      <TodoList todos={todos} setTodos={setTodos} onChange={handleChangeTodo} onDelete={handleDeleteTodo} />
     </main>
   )
 }
