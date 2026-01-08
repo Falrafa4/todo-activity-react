@@ -8,7 +8,7 @@ export default function TodoList({ todos, onChange, onDelete }) {
                 {todos.map((todo) => (
                     <TodoItem key={todo.id} todo={todo} onChange={onChange} onDelete={onDelete} />
                 ))}
-                {todos.length === 0 && <p><em>Todo List kosong.</em></p>}
+                {todos.length === 0 && <p><em>Empty...</em></p>}
             </ul>
         </div>
     )

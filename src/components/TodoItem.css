@@ -9,16 +9,23 @@ li:hover {
     cursor: pointer;
 }
 
+.icons {
+    display: flex;
+    gap: 0.2rem;
+}
+
 .todo-item {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-.delete-icon svg {
+.delete-icon svg,
+.edit-icon svg {
     transition: fill .3s;
 }
 
-.delete-icon:hover svg {
+.delete-icon:hover svg,
+.edit-icon:hover svg {
     fill: #000;
 }
