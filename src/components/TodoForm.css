@@ -18,7 +18,10 @@ form input:focus {
 }
 
 button {
-    padding: 0.2rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 1rem;
     background-color: var(--primary);
     border: none;
     outline: none;

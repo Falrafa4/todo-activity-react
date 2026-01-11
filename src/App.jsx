@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useReducer } from 'react'
 import './App.css'
 import Header from './components/Header'
 import TodoList from './components/TodoList'
@@ -11,45 +11,77 @@ const initialTodos = [
   { id: id++, title: "Belajar Laravel", done: false },
 ]
 
+function todosReducer(todos, action) {
+  switch (action.type) {
+    case "ADD_TODO":
+      return [
+        ...todos,
+        {
+          id: id++,
+          title: action.title,
+          done: false
+        }
+      ];
+
+    case "CHANGE_TODO":
+      return todos.map(todo =>
+        todo.id === action.id ? { ...todo, title: action.title, done: action.done } : todo
+      );
+
+    case "DELETE_TODO":
+      return todos.filter(todo => todo.id !== action.id);
+
+    case "RESET":
+      return [];
+
+    default:
+      return todos;
+  }
+}
+
 function App() {
-  const [todos, setTodos] = useState(initialTodos);
+  // const [todos, setTodos] = useState(initialTodos); //ini state
+  const [todos, dispatch] = useReducer(todosReducer, initialTodos); //ini reducer
+
+  useEffect(() => {
+    document.title = `Total Aktivitas: ${todos.length}`
+    // alert('todos berubah')
+  }, [todos]);
 
   function handleAddTodo(title) {
-    const newTodo = {
-      id: id++,
-      title: title,
-      done: false
-    };
-
-    setTodos([...todos, newTodo]);
+    dispatch({
+      type: 'ADD_TODO',
+      title: title
+    })
   }
 
   function handleChangeTodo(todo) {
-    const updatedTodo = todos.map(item => {
-      if (item.id === todo.id) {
-        // insert data baru
-        return todo;
-      } else {
-        // insert data lama
-        return item;
-      }
-    });
-    setTodos(updatedTodo);
+    dispatch({
+      type: 'CHANGE_TODO',
+      id: todo.id,
+      title: todo.title,
+      done: todo.done
+    })
   }
 
   function handleDeleteTodo(todo) {
-    setTodos(
-      todos.filter(item => 
-        item.id !== todo.id
-      )
-    )
+    dispatch({
+      type: 'DELETE_TODO',
+      id: todo.id
+    })
+  }
+
+  function handleReset() {
+    dispatch({
+      type: 'RESET'
+    })
   }
 
   return (
     <main>
       <Header />
       <TodoForm onAddTodo={handleAddTodo} />
-      <TodoList todos={todos} setTodos={setTodos} onChange={handleChangeTodo} onDelete={handleDeleteTodo} />
+      <TodoList todos={todos} handleReset={handleReset} onChange={handleChangeTodo} onDelete={handleDeleteTodo} />
     </main>
   )
 }

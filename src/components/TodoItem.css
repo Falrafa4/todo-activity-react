@@ -20,12 +20,10 @@ li:hover {
     align-items: center;
 }
 
-.delete-icon svg,
-.edit-icon svg {
+.icon svg {
     transition: fill .3s;
 }
 
-.delete-icon:hover svg,
-.edit-icon:hover svg {
+.icon:hover svg {
     fill: #000;
 }
