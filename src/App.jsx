@@ -44,8 +44,7 @@ function App() {
   const [todos, dispatch] = useReducer(todosReducer, initialTodos); //ini reducer
 
   useEffect(() => {
-    document.title = `Total Aktivitas: ${todos.length}`
-    // alert('todos berubah')
+    document.title = `Total Aktivitas: ${todos.length}`;
   }, [todos]);
 
   function handleAddTodo(title) {
