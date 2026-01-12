@@ -1,13 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import "./TodoItem.css";
 
 export default function TodoItem({ todo, onChange, onDelete }) {
     const [isEditing, setIsEditing] = useState(false);
     let titleComponent, actionComponent;
-    const checkBox = useRef(null);
 
     function handleListClick() {
-        console.info("clicked");
         handleChangeDone({
             target: { checked: !todo.done }
         })
@@ -54,7 +52,7 @@ export default function TodoItem({ todo, onChange, onDelete }) {
     return (
         <li onClick={handleListClick}>
             <div className="todo-item">
-                <input type="checkbox" ref={checkBox} checked={todo.done} onChange={handleChangeDone} />
+                <input type="checkbox" checked={todo.done} onChange={handleChangeDone} />
                 {titleComponent}
             </div>
             <div className="icons">
