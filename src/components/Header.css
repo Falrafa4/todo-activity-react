@@ -3,11 +3,13 @@ header {
     align-items: flex-end;
     gap: 0.7rem;
     margin-bottom: 1rem;
+    flex-shrink: 0;
 }
 
 header h1 {
     color: var(--primary);
     font-weight: bolder;
+    width: min-content;
 }
 
 header hr {

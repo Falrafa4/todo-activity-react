@@ -1,4 +1,5 @@
 import TodoItem from "./TodoItem";
+import EmptyImage from "../assets/empty.svg";
 import "./TodoList.css";
 
 export default function TodoList({ todos, handleReset, onChange, onDelete }) {
@@ -20,7 +21,10 @@ export default function TodoList({ todos, handleReset, onChange, onDelete }) {
                 {todos.map((todo) => (
                     <TodoItem key={todo.id} todo={todo} onChange={onChange} onDelete={onDelete} />
                 ))}
-                {todos.length === 0 && <p><em>Empty...</em></p>}
+                {todos.length === 0 && <p className="empty-message">
+                    <img src={EmptyImage} alt="Empty" />
+                    No todos available.
+                </p>}
             </ul>
         </div>
     )

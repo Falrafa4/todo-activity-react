@@ -11,3 +11,11 @@
     gap: 0.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
+
+p.empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(0, 0, 0, 0.6);
+}
